@@ -1,0 +1,23 @@
+{
+  "name": "score-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avi-rapaport/score-tracker.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/avi-rapaport/score-tracker/issues"
+  },
+  "homepage": "https://github.com/avi-rapaport/score-tracker#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "mongodb": "^7.5.0"
+  }
+}
