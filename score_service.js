@@ -31,7 +31,31 @@ async function getTopLeaderboard(game) {
   return addRank(result);
 }
 
+async function getPlayerData(playerName) {
+  const filter = { playerName };
+  const sort = { createdAt: -1 };
+  const allScores = await scoreRepo.getDataWithOptions({ filter, sort });
+
+  const bestResult = allScores.reduce((acc, current) => {
+    const currentGame = current.game;
+    const currentPoints = current.points;
+
+    if (!acc[currentGame] || currentPoints > acc[currentGame]) {
+      acc[currentGame] = currentPoints;
+    }
+    return acc;
+  }, {});
+
+  const bestPerGame = Object.entries(bestResult).map(([game, best]) => ({
+    game,
+    best,
+  }));
+
+  return { allScores, bestPerGame };
+}
+
 export const scoreService = {
   createScore,
   getTopLeaderboard,
+  getPlayerData,
 };
