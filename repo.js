@@ -1,13 +1,29 @@
+import { Collection } from "mongodb";
 import { getDb } from "./db.js";
 
-function getScores() {
-  return getDb().collection("scores");
-}
+export function initBaseRepo(collectionName) {
+  function collection() {
+    return getDb().collection(collectionName);
+  }
 
-async function createScore(data) {
-  const newScore = { ...data, createdAt: new Date() };
-  const result = await getScores().insertOne(newScore);
-  return result.insertedId;
-}
+  async function create(data) {
+    const result = await collection().insertOne(data);
+    return result.insertedId;
+  }
 
-export const scoreRepo = { createScore };
+  async function getDataWithOptions({
+    filter = {},
+    sort = {},
+    limit = 0,
+    fields = {},
+  } = {}) {
+    return collection()
+      .find(filter)
+      .sort(sort)
+      .limit(limit)
+      .project(fields)
+      .toArray();
+  }
+
+  return { collection, create, getDataWithOptions };
+}

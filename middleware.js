@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { fa, fi } from "zod/locales";
 
 export const scoreSchema = z.object({
   playerName: z.string().min(2),
@@ -17,7 +16,7 @@ export function validateBody(schema) {
       const fieldError = JSON.parse(result.error).map(
         (f) => f.path + ": " + f.message,
       );
-      const error = new Error("Invalid data! ");
+      const error = new Error("Invalid fields! ");
       error.statusCode = 400;
       error.fieldError = fieldError;
       return next(error);
