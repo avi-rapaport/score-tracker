@@ -1,6 +1,6 @@
 import express from "express";
-import { scoreService } from "./score_service.js";
-import { scoreSchema } from "./middleware.js";
+import { scoreService } from "../services/score_service.js";
+import { scoreSchema } from "../middleware.js";
 
 export const router = express.Router();
 

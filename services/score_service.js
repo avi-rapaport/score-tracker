@@ -1,4 +1,4 @@
-import { scoreRepo } from "./score_repo.js";
+import { scoreRepo } from "../score_repo.js";
 
 async function createScore(newScore) {
   const scoreToCreate = { ...newScore, createdAt: new Date() };

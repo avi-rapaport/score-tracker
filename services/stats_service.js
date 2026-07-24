@@ -1,4 +1,4 @@
-import { scoreRepo } from "./score_repo.js";
+import { scoreRepo } from "../score_repo.js";
 
 async function getStats() {
   const highestScore = await scoreRepo.getDataWithOptions({
@@ -47,4 +47,8 @@ async function getStats() {
   };
 }
 
-export const statsService = { getStats };
+async function getGamesWithScore() {
+  return await scoreRepo.getUniqueItems("game");
+}
+
+export const statsService = { getStats, getGamesWithScore };

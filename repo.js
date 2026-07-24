@@ -29,5 +29,9 @@ export function initBaseRepo(collectionName) {
     return collection().countDocuments();
   }
 
-  return { collection, create, getDataWithOptions, getCount };
+  async function getUniqueItems(field) {
+    return collection().distinct(field);
+  }
+
+  return { collection, create, getDataWithOptions, getCount, getUniqueItems };
 }

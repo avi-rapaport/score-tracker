@@ -1,12 +1,12 @@
 import "dotenv/config";
 import express from "express";
-import { router as scoreRouter } from "./score_routes.js";
-import { router as leaderboardRouter } from "./leaderboard_routes.js";
-import { router as playerRouter } from "./player_routes.js";
-import { router as statsRouter } from "./stats_routes.js";
+import { router as scoreRouter } from "./routes/score_routes.js";
+import { router as leaderboardRouter } from "./routes/leaderboard_routes.js";
+import { router as playerRouter } from "./routes/player_routes.js";
+import { router as statsRouter } from "./routes/stats_routes.js";
 import { getConnection } from "./db.js";
 import { errorHandling } from "./middleware.js";
-import { statsService } from "./stats_service.js";
+import { statsService } from "./services/stats_service.js";
 
 const PORT = process.env.PORT || 3000;
 
