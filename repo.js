@@ -25,5 +25,9 @@ export function initBaseRepo(collectionName) {
       .toArray();
   }
 
-  return { collection, create, getDataWithOptions };
+  async function getCount() {
+    return collection().countDocuments();
+  }
+
+  return { collection, create, getDataWithOptions, getCount };
 }
